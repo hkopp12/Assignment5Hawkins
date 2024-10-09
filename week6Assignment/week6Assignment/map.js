@@ -29,9 +29,9 @@ require(
                     map: map,
                     camera: {
                         position: {
-                            x: -105.503,
+                            x: -55.503,
                             y: 44.270,
-                            z: 20000000,
+                            z: 10000000,
                             spatialReference: {
                                 wkid: 4326
     
@@ -43,7 +43,7 @@ require(
                     popup: {
                         dockEnabled: true,
                         dockOptions: {
-                            breakpoint: false
+                            breakpoint: true
                         }
                     },
                     // enable shadows to be cast from the features
@@ -69,12 +69,13 @@ require(
                           };
                   
                           const markerSymbol = {
-                            type: "simple-marker", 
-                            color: [0, 0, 255],
-                            outline: {
-                              // autocasts as new SimpleLineSymbol()
-                              color: [255, 255, 255],
-                              width: 2
+                            "type": "simple-marker",
+                            "style": "Pushpin 2",
+                            "color": [226, 119, 40],
+                            "size": "18px",
+                            "outline": {
+                                "color": [255, 255, 255],
+                                "width": 1
                             }
                           };
                       
