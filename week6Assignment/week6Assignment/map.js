@@ -86,10 +86,54 @@ require(
                             }
                           });
                           graphicsLayer.add(pointGraphic);
-                    
+                          view.goTo({
+                            center: [-112, 32],
+                            zoom: 5,
+                            heading: 30,
+                            tilt: 50
+                        }, {
+                            duration: 1000, 
+                        }).catch(function(error) {
+                            console.error("SceneView rejected: ", error);
+                        });
                     }
                     
-                    
+                    clusterLabelCreator.getLabelSchemes({
+                        layer: featureLayer,
+                        view: view
+                      }).then(function(labelSchemes){
+                        const featureReduction = featureLayer.featureReduction.clone();
+                        const { labelingInfo, clusterMinSize } = labelSchemes.primaryScheme;
+                        featureReduction.labelingInfo = labelingInfo;
+                        featureReduction.clusterMinSize = clusterMinSize;
+                      
+                        featureLayer.featureReduction = featureReduction;
+                      }).catch(function(error){
+                        console.error(error);
+                      });
+                
+
+                      var search = new Search({
+                        view: view,  // Attaches the search bar to the view
+                        allPlaceholder: "Search locations or features", // Placeholder text
+                        sources: [
+                            {
+                                layer: featureLayer,
+                                searchFields: ["name"], // Search field in your FeatureLayer (adjust based on data)
+                                displayField: "name",    // Display field in popup
+                                exactMatch: false,
+                                outFields: ["*"],        // Fields to include in the results
+                                name: "Feature Layer Search",
+                                placeholder: "Search features"
+                            },
+                        ]
+                    });
+                
+                    // Add the Search widget to the top-right corner of the view
+                    view.ui.add(search, {
+                        position: "top-right"
+                    });
+                
                 }
                 initMap()
                 return {
