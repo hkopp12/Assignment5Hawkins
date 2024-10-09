@@ -6,4 +6,11 @@ var myStuff = {
     "Favorite Campspot": {city: "Bighorn Mountains", state: "Wyoming", "coord": [-106.9863, 44.0722] },
 }
 
+var cityList = [
+    { city: "New York", location: [-74.006, 40.7128] },
+    { city: "Los Angeles", location: [-118.2437, 34.0522] },
+    { city: "Chicago", location: [-87.6298, 41.8781] },
+    { city: "Houston", location: [-95.3698, 29.7604] },
+    { city: "Miami", location: [-80.1918, 25.7617] }
+];
 

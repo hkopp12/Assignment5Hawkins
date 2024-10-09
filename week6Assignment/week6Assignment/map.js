@@ -97,8 +97,9 @@ require(
                             console.error("SceneView rejected: ", error);
                         });
                     }
-                    
-                    clusterLabelCreator.getLabelSchemes({
+
+                    //This is the cluster feature
+                    clusterLabelCreator.getLabelSchemes({ 
                         layer: featureLayer,
                         view: view
                       }).then(function(labelSchemes){
@@ -111,29 +112,17 @@ require(
                       }).catch(function(error){
                         console.error(error);
                       });
-                
+            
+                      //Search Bar
+                      const searchWidget = new Search({
+                        view: view
+                      });
+                      view.ui.add(searchWidget, {
+                        position: "top-left",
+                        index: 2
+                      });
+                      
 
-                      var search = new Search({
-                        view: view,  // Attaches the search bar to the view
-                        allPlaceholder: "Search locations or features", // Placeholder text
-                        sources: [
-                            {
-                                layer: featureLayer,
-                                searchFields: ["name"], // Search field in your FeatureLayer (adjust based on data)
-                                displayField: "name",    // Display field in popup
-                                exactMatch: false,
-                                outFields: ["*"],        // Fields to include in the results
-                                name: "Feature Layer Search",
-                                placeholder: "Search features"
-                            },
-                        ]
-                    });
-                
-                    // Add the Search widget to the top-right corner of the view
-                    view.ui.add(search, {
-                        position: "top-right"
-                    });
-                
                 }
                 initMap()
                 return {
