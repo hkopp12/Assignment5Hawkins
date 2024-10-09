@@ -2,6 +2,10 @@
 # GIST 
 # 10/9/24
 
-# This map shows a few of the important landmarks in my life, including hometown, current residence, study abroad location and more. 
+# This map shows a few of the important landmarks in my life, including hometown, current residence, study abroad location and more.
+# Features
+# - Double click to zoom
+# - Altered sceneView
+# - Altered landmarks and symbology
 
 # http://127.0.0.1:5500/Assignment5Hawkins/week6Assignment/week6Assignment/index.html
